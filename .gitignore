@@ -1,0 +1,14 @@
+__pycache__/
+.pytest_cache/
+.venv/
+outputs/
+*.ckpt
+*.tabpfn_fit
+*.npz
+*.csv
+
+# Downloaded data and local-only files
+data/
+.DS_Store
+.env
+.env.*
