@@ -2,9 +2,21 @@
 
 **Our approach: epoch-wise resampling.** Instead of using all 80,000 rows as a single context, we reshuffle the training set each epoch into groups of at most 10,000 rows and fine-tune the same TabPFN-2 model across those groups. This lets its weights learn from all **80,000 distinct training rows**, while keeping each fine-tuning dataset within the smaller context range.
 
-This repository demonstrates the method on the public **Covertype** dataset. It includes the resampling implementation, fine-tuning script and tests. Datasets and model weights are not bundled; experimental performance is not claimed without running the full training workflow.
+This repository demonstrates the method on the public **Covertype** dataset. It includes the resampling implementation, fine-tuning script and tests. Datasets and model weights are not bundled; Covertype fine-tuning performance is not claimed without running the full training workflow.
 
 中文概述：本项目从 Covertype 抽取 **80,000 条训练数据**及 **20,000 条独立测试数据**。每轮重新打乱训练集，拆成最多 10,000 条的小数据集，逐批微调同一 TabPFN-2 模型。测试集从不参与重采样或参数更新。
+
+## Questionnaire study: method and results
+
+Slides 2–3 from **1104量表_pst** introduce TabPFN and show the questionnaire experiment using **32 estimators and a 10,000-sample downsampled dataset**. The slides mark TabPFN* as **zero-training inference**; the fine-tuning code in this repository uses the public Covertype dataset.
+
+### Method — slide 2
+
+![TabPFN method, slide 2 of 1104量表_pst](docs/assets/questionnaire-slide-02.png)
+
+### Results — slide 3
+
+![Questionnaire classification results, slide 3 of 1104量表_pst](docs/assets/questionnaire-slide-03.png)
 
 ## Why resampling?
 
